@@ -1,0 +1,11 @@
+__pycache__/
+*.egg-info/
+build/
+dist/
+.toolchain/
+.venv/
+src/sensorkit/*.c
+src/sensorkit/*.so
+src/sensorkit/*.pyd
+src/sensorkit/*.html
+.pytest_cache/
