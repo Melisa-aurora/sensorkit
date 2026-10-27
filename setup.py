@@ -1,11 +1,10 @@
-"""Cythonization config for sensorkit, target: armv8-a (aarch64 Linux).
+"""Cythonization config for sensorkit.
 
 The package is plain Python. This file declares how it is compiled:
 each module below is cythonized (Cython pure-Python mode, .py -> .c) and
-built as a native extension, e.g. sensorkit/filters.cpython-311-aarch64-linux-gnu.so.
-The pure-Python __init__.py is shipped unchanged.
+built as a native extension. The pure-Python __init__.py is shipped unchanged.
 
-Build on (or cross-compile for) aarch64 Linux:
+Build:
     pip install "Cython>=3.0" setuptools wheel
     python setup.py build_ext --inplace
 """
@@ -29,17 +28,10 @@ CYTHON_DIRECTIVES = {
     "infer_types": True,
 }
 
-# C flags for the armv8 target.
-ARMV8_CFLAGS = [
-    "-march=armv8-a",
-    "-O2",
-]
-
 extensions = [
     Extension(
         name,
         sources=["src/" + name.replace(".", "/") + ".py"],
-        extra_compile_args=ARMV8_CFLAGS,
     )
     for name in CYTHON_MODULES
 ]
